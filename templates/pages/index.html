@@ -1,0 +1,20 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+  <table class="table-client">
+    <thead>
+      <th>Nome</th>
+      <th>Contato</th>
+      <th>Endereço</th>
+    </thead>
+    <tbody>
+      {% for c in clientes %}
+      <tr>
+        <td>{{c.nome}}</td>
+        <td>{{c.telefone}}</td>
+        <td>{{c.endereco}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
