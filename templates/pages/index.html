@@ -13,7 +13,7 @@
     <textarea class="text-area" name="text-message" id="text-m" placeholder="{{placeholder}}" maxlength="160"></textarea>
   </div>
 </div>
-<!-- Contêiner para tabela com scroll -->
+
 <div class="table-container">
   <table class="table-client">
     <thead>
@@ -34,7 +34,12 @@
         <td>{{ c.telefone }}</td>
         <td>{{ c.contrato }}</td>
         <td>{{ c.vencimento }}</td>
-        <td><button class="btn-del">Excluir<i class="bi bi-trash"></button></i></td>
+        <td>
+          <!-- Link que chama a URL de remoção -->
+          <a href="{% url 'remove_cliente' c.codigo_cliente %}" class="btn-del">
+            Excluir <i class="bi bi-trash"></i>
+          </a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>

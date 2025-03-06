@@ -1,5 +1,8 @@
 import mysql.connector
 
+# Conjunto global de códigos de clientes “excluídos” apenas em memória
+excluded_codes = set()
+
 def get_connection():
     return mysql.connector.connect(
         host="192.168.0.55",
@@ -13,7 +16,6 @@ def get_clientes(dias):
     mydb = get_connection()
     mycursor = mydb.cursor()
 
-    # Utilize parâmetros para evitar SQL injection.
     sql = '''
     SELECT 
         itxa.contrno AS contrato, 
@@ -34,11 +36,19 @@ def get_clientes(dias):
     clientes = []
     for c in data:
         dicionario = dict(zip(nomes_colunas, c))
+        # Filtra números de telefone “incompletos”
         if len(dicionario['telefone'].replace(' ', '')) >= 11:
-            clientes.append(dicionario)
+            # Verifica se esse codigo não está no conjunto de excluidos
+            if dicionario['codigo_cliente'] not in excluded_codes:
+                clientes.append(dicionario)
 
     mydb.close()
     return clientes
 
+def remove_from_clientes(codigo_cliente):
+    """
+    Marca o código do cliente como 'excluído' em memória.
+    """
+    excluded_codes.add(codigo_cliente)
 
 print("✅ Executado com Sucesso: clients.py")
