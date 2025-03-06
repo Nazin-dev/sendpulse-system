@@ -13,6 +13,7 @@ def home(request):
     
     context = {
         'clientes': clientes,
-        'dias': dias  
+        'dias': dias,
+        'placeholder': 'Hello, World'  
     }
     return render(request, 'pages/index.html', context)

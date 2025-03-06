@@ -3,10 +3,14 @@
 {% block content %}
 <div class="btn-selection">
   <form method="get" action="{% url 'home' %}">
-    <button type="submit" name="dias" value="2">2 Dias para Vencimento</button>
-    <button type="submit" name="dias" value="3">3 Dias para Vencimento</button>
-    <button type="submit" name="dias" value="5">5 Dias para Vencimento</button>
+    <h3>Quantos dias para o Vencimento?</h3>
+    <button type="submit" name="dias" value="2">2</button>
+    <button type="submit" name="dias" value="3">3</button>
+    <button type="submit" name="dias" value="5">5</button>
   </form>
+</div>
+<div class="text-content">
+  <textarea class="text-area" name="text-message" id="text-m" placeholder="{{placeholder}}"></textarea>
 </div>
   <table class="table-client">
     <thead>
