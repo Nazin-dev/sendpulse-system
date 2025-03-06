@@ -2,9 +2,11 @@
 
 {% block content %}
 <div class="btn-selection">
-  <button class="btn-2days">2 Dias para Vencimento</button>
-  <button class="btn-3days">3 Dias para Vencimento</button>
-  <button class="btn-5days">5 Dias para Vencimento</button>
+  <form method="get" action="{% url 'home' %}">
+    <button type="submit" name="dias" value="2">2 Dias para Vencimento</button>
+    <button type="submit" name="dias" value="3">3 Dias para Vencimento</button>
+    <button type="submit" name="dias" value="5">5 Dias para Vencimento</button>
+  </form>
 </div>
   <table class="table-client">
     <thead>
