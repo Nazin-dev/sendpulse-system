@@ -1,35 +1,43 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-<div class="btn-selection">
-  <form method="get" action="{% url 'home' %}">
-    <h3>Quantos dias para o Vencimento?</h3>
-    <button type="submit" name="dias" value="2">2</button>
-    <button type="submit" name="dias" value="3">3</button>
-    <button type="submit" name="dias" value="5">5</button>
-  </form>
+<div class="content-submit">
+  <div class="btn-selection">
+    <form method="get" action="{% url 'home' %}">
+      <h3>Quantos dias para o Vencimento?</h3>
+      <input class="input-filter" type="number" name="dias" value="{{ dias }}" placeholder="Digite o número de dias">
+      <button type="submit">Buscar</button>
+    </form>
+  </div>
+  <div class="text-content">
+    <textarea class="text-area" name="text-message" id="text-m" placeholder="{{placeholder}}" maxlength="160"></textarea>
+  </div>
 </div>
-<div class="text-content">
-  <textarea class="text-area" name="text-message" id="text-m" placeholder="{{placeholder}}"></textarea>
-</div>
+<!-- Contêiner para tabela com scroll -->
+<div class="table-container">
   <table class="table-client">
     <thead>
-      <th>Codigo</th>
-      <th>Nome</th>
-      <th>Contato</th>
-      <th>Contrato</th>
-      <th>Vencimento</th>
+      <tr>
+        <th>Codigo</th>
+        <th>Nome</th>
+        <th>Contato</th>
+        <th>Contrato</th>
+        <th>Vencimento</th>
+        <th>Funções</th>
+      </tr>
     </thead>
     <tbody>
       {% for c in clientes %}
       <tr>
-        <td>{{c.codigo_cliente}}</td>
-        <td>{{c.nome_cliente}}</td>
-        <td>{{c.telefone}}</td>
-        <td>{{c.contrato}}</td>
-        <td>{{c.vencimento}}</td>
+        <td>{{ c.codigo_cliente }}</td>
+        <td>{{ c.nome_cliente }}</td>
+        <td>{{ c.telefone }}</td>
+        <td>{{ c.contrato }}</td>
+        <td>{{ c.vencimento }}</td>
+        <td><button class="btn-del">Excluir<i class="bi bi-trash"></button></i></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+</div>
 {% endblock content %}

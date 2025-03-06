@@ -1,29 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root {
+  --color-primary: #136d91;
+  --backgroun-color-btn: #00b175;
+}
+
+
 body {
   font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+.main-content {
+  margin-left: 2vh;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--color-primary);
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20vh;
+  color: white;
+  font-weight: 600;
+  margin-left: 2vh;
+}
+
+.content-submit {
+  max-width: 70vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+/* Escrol dentro da table */
+.table-container {
+  height: 350px; 
+  overflow-y: auto; 
+  margin: 20px 0;
+  border: 1px solid var(--color-primary); 
 }
 
 .table-client {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
   font-family: Arial, sans-serif;
   font-size: 16px;
 }
+
 /* Estilização dos cabeçalhos */
 th, td {
   border: 1px solid #333;
   padding: 10px;
   text-align: left;
 }
+
 th {
-  background-color: #c7c5c5;
+  background-color: var(--color-primary);
+  color: white;
 }
+
 /* Estilização das linhas alternadas */
 tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #e7e7e7;
 }
+
 /* Efeito de hover nas linhas */
 tbody tr:hover {
   background-color: #ddd;
@@ -37,21 +83,43 @@ tbody tr:hover {
   padding: 1dvh;
   width: 50vh;
   max-width: 100vh;
-  height: 20vh;
-  max-height: 50vh;
+  height: 10vh;
+  max-height: 30vh;
   border-radius: 8px;
 }
 
-
-
 .btn-selection button {
- padding: 10px 20px;
- border-radius: 8px;
- border: none;
- box-shadow: 2px 2px 4px rgb(185, 185, 185);
- margin-right: 24px;
+  padding: 6px 20px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 2px 2px 4px rgb(185, 185, 185);
+  margin-right: 24px;
+  background-color: var(--backgroun-color-btn);
+  color: white;
+
+  font-weight: 700;
 }
 
 .btn-selection button:hover {
   box-shadow: 1px 1px 4px rgb(185, 185, 185);
+}
+
+/* estilização do input */
+.input-filter {
+  width: 39vh;
+  height: 3vh;
+}
+
+.btn-del {
+  background-color: red;
+  padding: 8px;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+}
+
+.bi-trash {
+  margin-left: 5px;
+  font-weight: 600;
 }
