@@ -1,18 +1,27 @@
 {% extends "global/base.html" %}
 
 {% block content %}
+<div class="btn-selection">
+  <button class="btn-2days">2 Dias para Vencimento</button>
+  <button class="btn-3days">3 Dias para Vencimento</button>
+  <button class="btn-5days">5 Dias para Vencimento</button>
+</div>
   <table class="table-client">
     <thead>
+      <th>Codigo</th>
       <th>Nome</th>
       <th>Contato</th>
-      <th>Endereço</th>
+      <th>Contrato</th>
+      <th>Vencimento</th>
     </thead>
     <tbody>
       {% for c in clientes %}
       <tr>
-        <td>{{c.nome}}</td>
+        <td>{{c.codigo_cliente}}</td>
+        <td>{{c.nome_cliente}}</td>
         <td>{{c.telefone}}</td>
-        <td>{{c.endereco}}</td>
+        <td>{{c.contrato}}</td>
+        <td>{{c.vencimento}}</td>
       </tr>
       {% endfor %}
     </tbody>

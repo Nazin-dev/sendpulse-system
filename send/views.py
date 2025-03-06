@@ -4,7 +4,7 @@ import clients
 def home(request):
   
   context = {
-    'clientes': clients.clientes_dict
+    'clientes': clients.clientes
   }
   
   return render(
