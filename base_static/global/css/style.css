@@ -5,7 +5,6 @@
   --backgroun-color-btn: #00b175;
 }
 
-
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -15,26 +14,49 @@ body {
   margin-left: 2vh;
 }
 
+/* Header e navegação */
 .header-content {
   display: flex;
   flex-direction: row;
   background-color: var(--color-primary);
+  height: 8vh;
 }
 
 .nav-content {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between; /* Distribui o logo, links e o ícone */
   align-items: center;
-  gap: 20vh;
   color: white;
   font-weight: 600;
   margin-left: 2vh;
+  position: relative;
 }
 
+/* Container para os links de navegação */
+.nav-links-container {
+  display: flex;
+  gap: 20vh;
+}
+
+/* Estilização dos links (conforme necessário) */
+.nav-links {
+  color: white;
+  cursor: pointer;
+}
+
+/* Ícone do menu hambúrguer: oculto em telas grandes */
+.hamburger-icon {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Conteúdo da página */
 .content-submit {
-  max-width: 70vh;
-  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 5vh;
 }
 
@@ -77,31 +99,67 @@ tbody tr:hover {
 
 .text-content {
   margin-top: 2vh;
+  width: 50vh;
 }
 
 .text-area {
   padding: 1dvh;
   width: 50vh;
-  max-width: 100vh;
-  height: 10vh;
+  max-width: 50vh;
+  height: 12vh;
   max-height: 30vh;
-  border-radius: 8px;
+  border-radius: 4px;
+  box-sizing: border-box; 
+  resize: none;  
+}
+
+.btn-selection {
+  display: flex;
+  gap: 50px;
+}
+
+.submit-content {
+  display: flex;
+  gap: 8px;
+  justify-content: end;
+  align-items: center;
+  width: 50vh;
 }
 
 .btn-selection button {
+  display: flex;
   padding: 6px 20px;
   border-radius: 4px;
-  border: none;
-  box-shadow: 2px 2px 4px rgb(185, 185, 185);
-  margin-right: 24px;
+  border: 1px solid var(--backgroun-color-btn);
   background-color: var(--backgroun-color-btn);
   color: white;
-
   font-weight: 700;
 }
 
 .btn-selection button:hover {
-  box-shadow: 1px 1px 4px rgb(185, 185, 185);
+  transition: 0.5s;
+  background-color: white;
+  color: var(--backgroun-color-btn);
+  border: 1px solid var(--backgroun-color-btn);
+}
+
+.btn-enviar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 4px;
+  padding: 6px 20px;
+  color: white;
+  font-weight: 600;
+}
+
+.btn-enviar:hover {
+  transition: 0.5s;
+  background-color: white;
+  border: 1px solid red;
+  color: red;
 }
 
 /* estilização do input */
@@ -126,4 +184,61 @@ tbody tr:hover {
 
 .btn-del {
   text-decoration: none;
+  border: 1px solid red;
+}
+
+.btn-del:hover {
+  transition: 0.5s;
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  /* Exibe o ícone de hambúrguer */
+  .hamburger-icon {
+    display: block;
+  }
+  /* Oculta os links de navegação por padrão */
+  .nav-links-container {
+    display: none;
+    flex-direction: column;
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 8vh;
+    left: 0;
+    width: 50vh;
+    text-align: center;
+    gap: 0;
+  }
+  /* Ao ativar, exibe o menu */
+  .nav-links-container.active {
+    display: flex;
+  }
+  /* Ajusta os links do menu */
+  .nav-links {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+  }
+}
+
+/* Media query para telas muito pequenas */
+@media (max-width: 400px) {
+  .text-area {
+    padding: 1dvh;
+    width: 80vh;
+    max-width: 80vh;
+    height: 12vh;
+    max-height: 30vh;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    resize: none;  
+  }
+
+  .text-content {
+    margin-top: 2vh;
+    width: 80vh;
+  }
 }

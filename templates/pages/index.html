@@ -2,15 +2,23 @@
 
 {% block content %}
 <div class="content-submit">
+  <!-- Formulário para buscar clientes -->
   <div class="btn-selection">
     <form method="get" action="{% url 'home' %}">
       <h3>Quantos dias para o Vencimento?</h3>
-      <input class="input-filter" type="number" name="dias" value="{{ dias }}" placeholder="Digite o número de dias">
-      <button type="submit">Buscar</button>
+      <div class="submit-content">
+        <input class="input-filter" type="number" name="dias" value="{{ dias }}" placeholder="Digite o número de dias">
+        <button type="submit">Buscar</button>
+      </div>
     </form>
   </div>
+  <!-- Formulário para enviar a mensagem -->
   <div class="text-content">
-    <textarea class="text-area" name="text-message" id="text-m" placeholder="{{placeholder}}" maxlength="160"></textarea>
+    <form method="post" action="{% url 'home' %}">
+      {% csrf_token %}
+      <textarea class="text-area" name="text-message" id="text-m" placeholder="{{ placeholder }}" maxlength="160"></textarea>
+      <button class="btn-enviar" type="submit">Enviar</button>
+    </form>
   </div>
 </div>
 
@@ -23,7 +31,7 @@
         <th>Contato</th>
         <th>Contrato</th>
         <th>Vencimento</th>
-        <th>Funções</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>

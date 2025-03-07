@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ícone do Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
   <title>System Sendpule Real</title>
@@ -11,20 +12,33 @@
 <body>
   <header class="header-content">
     <nav class="nav-content">
-      <h2>LOGO</h2>
-      <p class="nav-links">E-mail</p>
-      <p class="nav-links">Whatsapp</p>
-      <p class="nav-links">SMS</p>
-      <p class="nav-links">Option 4</p>
-      <p class="nav-links">Option 5</p>
+      <!-- Ícone do menu hamburguer (visível em telas menores) -->
+      <div class="hamburger-icon" id="hamburger-icon">
+         <i class="bi bi-list"></i>
+      </div>
+      <!-- Container dos links de navegação -->
+      <div class="nav-links-container" id="nav-links-container">
+        <p class="nav-links">E-mail</p>
+        <p class="nav-links">Whatsapp</p>
+        <p class="nav-links">SMS</p>
+        <p class="nav-links">Option 4</p>
+        <p class="nav-links">Option 5</p>
+      </div>
     </nav>
   </header>
-<main class="main-content">
-{% load django_browser_reload %}
-  {% block content %}
-  
-  {% endblock content %}
-{% django_browser_reload_script %}
-</main>
+  <main class="main-content">
+    {% load django_browser_reload %}
+    {% block content %}
+    
+    {% endblock content %}
+    {% django_browser_reload_script %}
+  </main>
+
+  <!-- Script para alternar a exibição do menu -->
+  <script>
+    document.getElementById('hamburger-icon').addEventListener('click', function() {
+      document.getElementById('nav-links-container').classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
