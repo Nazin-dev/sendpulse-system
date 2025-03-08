@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
+  --backgroun-color-primary: #3292B5;
   --color-primary: #136d91;
-  --backgroun-color-btn: #00b175;
+  --backgroun-color-btn:  #00BBFF;
+  --btn-criar-color: #3BDE32;
 }
 
 body {
@@ -11,7 +13,7 @@ body {
 }
 
 .main-content {
-  margin-left: 2vh;
+ padding: 28px;
 }
 
 /* Header e navegação */
@@ -56,8 +58,9 @@ body {
 /* Conteúdo da página */
 .content-submit {
   display: flex;
+  margin-right: 40px;
   flex-direction: column;
-  margin-bottom: 5vh;
+  margin-bottom: 28px;
 }
 
 /* Escrol dentro da table */
@@ -70,9 +73,17 @@ body {
 
 .table-client {
   width: 100%;
+  border: 2px solid var(--backgroun-color-primary);
   border-collapse: collapse;
   font-family: Arial, sans-serif;
   font-size: 16px;
+}
+
+.table-client th,
+.table-client td {
+  /* Borda das células */
+  border: 1px solid #ccc;
+  padding: 16px; /* Espaçamento interno, opcional */
 }
 
 /* Estilização dos cabeçalhos */
@@ -83,7 +94,7 @@ th, td {
 }
 
 th {
-  background-color: var(--color-primary);
+  background-color: var(--backgroun-color-primary);
   color: white;
 }
 
@@ -104,17 +115,22 @@ tbody tr:hover {
 
 .text-area {
   padding: 1dvh;
-  width: 50vh;
-  max-width: 50vh;
-  height: 12vh;
+  width: 53vh;
+  height: 16vh;
   max-height: 30vh;
   border-radius: 4px;
   box-sizing: border-box; 
   resize: none;  
+  outline: none;
+  border: 2px solid var(--backgroun-color-primary);
 }
 
 .btn-selection {
   display: flex;
+  background-color: var(--backgroun-color-primary);
+  width: 100%;
+  padding: 20px;
+  border-radius: 4px;
   gap: 50px;
 }
 
@@ -126,7 +142,7 @@ tbody tr:hover {
   width: 50vh;
 }
 
-.btn-selection button {
+.btn-selection .btn-buscar {
   display: flex;
   padding: 6px 20px;
   border-radius: 4px;
@@ -136,23 +152,28 @@ tbody tr:hover {
   font-weight: 700;
 }
 
-.btn-selection button:hover {
+.btn-criar {
+  display: flex;
+  padding: 6px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--btn-criar-color);
+  background-color: var(--btn-criar-color);
+  color: white;
+  font-weight: 700;
+}
+
+.btn-selection .btn-buscar:hover {
   transition: 0.5s;
   background-color: white;
   color: var(--backgroun-color-btn);
   border: 1px solid var(--backgroun-color-btn);
 }
 
-.btn-enviar {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  background-color: red;
-  border: 1px solid red;
-  border-radius: 4px;
-  padding: 6px 20px;
-  color: white;
-  font-weight: 600;
+.btn-selection .btn-criar:hover {
+  transition: 0.5s;
+  background-color: white;
+  color: var(--btn-criar-color);
+  border: 1px solid var(--btn-criar-color);
 }
 
 .btn-enviar:hover {
@@ -166,6 +187,15 @@ tbody tr:hover {
 .input-filter {
   width: 39vh;
   height: 3vh;
+  padding: 4px 16px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+}
+
+.del-content {
+  display: flex;
+  align-items: c;
 }
 
 .btn-del {
