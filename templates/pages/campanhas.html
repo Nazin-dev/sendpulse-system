@@ -9,14 +9,32 @@
         </a>
     </div>
     <div class="list-campaign">
-        <div class="campaign">
-            <p class="p-campaign">Campanha de Vencimento - 2 dias</p>
-            <div class="campaign-actions">
-                <div class="campaign-edit action"><i class="bi bi-pencil-square"></i></div>
-                <div class="campaign-delete action"><i class="bi bi-trash3"></i></div>
-                <div class="campaign-status action"><i class="bi bi-play-fill"></i></div>
+        {% if campaigns %}
+            {% for camp in campaigns %}
+            <div class="campaign">
+                <p class="p-campaign">{{ camp.name }} - {{ camp.dias }} dias</p>
+                <div class="campaign-actions">
+                    <!-- Link para editar a campanha -->
+                    <a href="{% url 'home' %}?edit_campaign_id={{ camp.id }}" class="campaign-edit action">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a href="{% url 'delete_campaign' camp.id %}" class="campaign-delete action">
+                        <i class="bi bi-trash3"></i>
+                    </a>
+                    <!-- Link para alternar status -->
+                    <a href="{% url 'toggle_campaign_status' camp.id %}" class="campaign-status action">
+                        {% if camp.status == "active" %}
+                        <i class="bi bi-pause-fill"></i>
+                        {% else %}
+                        <i class="bi bi-play-fill"></i>
+                        {% endif %}
+                    </a>
+                </div>
             </div>
-        </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhuma campanha criada.</p>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

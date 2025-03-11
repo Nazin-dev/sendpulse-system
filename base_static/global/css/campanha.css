@@ -50,7 +50,11 @@
    border: 2px solid var(--color-max);
 }
 
-
+.list-campaign {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
 
 .create-icon .bi-plus-lg {
