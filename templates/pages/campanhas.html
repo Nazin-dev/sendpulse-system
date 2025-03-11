@@ -1,0 +1,22 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<div class="content-max">
+    <div class="create-campaign">
+        <h1 class="campaing-title">Criar campanha</h1>
+        <a href="{% url 'home' %}">
+            <div class="create-icon"><i class="bi bi-plus-lg"></i></div>
+        </a>
+    </div>
+    <div class="list-campaign">
+        <div class="campaign">
+            <p class="p-campaign">Campanha de Vencimento - 2 dias</p>
+            <div class="campaign-actions">
+                <div class="campaign-edit action"><i class="bi bi-pencil-square"></i></div>
+                <div class="campaign-delete action"><i class="bi bi-trash3"></i></div>
+                <div class="campaign-status action"><i class="bi bi-play-fill"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

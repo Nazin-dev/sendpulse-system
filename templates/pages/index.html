@@ -6,6 +6,7 @@
   <div class="btn-selection">
     <form method="get" action="{% url 'home' %}">
       <div class="submit-content">
+        <input class="input-name" type="text" name="name" value="" placeholder="Digite o nome da campanha">
         <input class="input-filter" type="number" name="dias" value="{{ dias }}" placeholder="Digite o número de dias">
         <button class="btn-buscar" type="submit">Buscar</button>
         <button class="btn-criar" type="submit" form="sendMessageForm">Criar</button>

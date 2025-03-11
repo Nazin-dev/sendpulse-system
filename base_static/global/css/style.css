@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
+  --color-max: #0A546F;
   --backgroun-color-primary: #3292B5;
   --color-primary: #136d91;
   --backgroun-color-btn:  #00BBFF;
@@ -20,7 +21,7 @@ body {
 .header-content {
   display: flex;
   flex-direction: row;
-  background-color: var(--color-primary);
+  background-color: var(--color-max);
   height: 8vh;
 }
 
@@ -45,6 +46,8 @@ body {
 .nav-links {
   color: white;
   cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
 }
 
 /* Ícone do menu hambúrguer: oculto em telas grandes */
@@ -137,9 +140,7 @@ tbody tr:hover {
 .submit-content {
   display: flex;
   gap: 8px;
-  justify-content: end;
   align-items: center;
-  width: 50vh;
 }
 
 .btn-selection .btn-buscar {
@@ -186,8 +187,15 @@ tbody tr:hover {
 /* estilização do input */
 .input-filter {
   width: 39vh;
-  height: 3vh;
-  padding: 4px 16px;
+  padding: 6px 20px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+}
+
+.input-name {
+  width: 39vh;
+  padding: 6px 20px;
   border-radius: 4px;
   outline: none;
   border: none;
