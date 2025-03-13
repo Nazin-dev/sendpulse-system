@@ -8,6 +8,7 @@
     --background-color-lite: #CAE8F3;
     --color-status: #0374FF;
     --coloor-delete: #FF0303;
+    --color-date: #494949;
   }
   
 
@@ -26,6 +27,19 @@
     padding: 24px;
     background-color: var(--backgroun-color-primary);
     border-radius: 4px;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.last-date {
+    color: var(--color-date);
+    font-size: 12px;
 }
 
 .create-campaign .campaing-title {

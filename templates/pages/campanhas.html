@@ -12,7 +12,10 @@
         {% if campaigns %}
             {% for camp in campaigns %}
             <div class="campaign">
-                <p class="p-campaign">{{ camp.name }} - {{ camp.dias }} dias</p>
+                <div class="info-content">
+                    <span class="p-campaign">{{ camp.name }} - {{ camp.dias }} dias</span>
+                    <span class="last-date">Último envio: 13/03/2025</span>
+                </div>
                 <div class="campaign-actions">
                     <!-- Link para editar a campanha -->
                     <a href="{% url 'home' %}?edit_campaign_id={{ camp.id }}" class="campaign-edit action">
