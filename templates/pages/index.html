@@ -6,11 +6,11 @@
   <div class="btn-selection">
     <form id="getForm" method="get" action="{% url 'home' %}">
       <div class="submit-content">
-        <!-- Preenche o nome se estiver em modo de edição -->
-        <input class="input-name" type="text" name="name" value="{{ initial.name|default:'' }}" placeholder="Digite o nome da campanha">
-        <input class="input-filter" type="number" name="dias" value="{{ dias }}" placeholder="Digite o número de dias">
+        <input class="input-name" type="text" name="name" id="campaignName" value="{{ initial.name|default:'' }}" placeholder="Digite o nome da campanha">
+        <input class="input-filter" type="number" name="dias" id="campaignDias" value="{{ dias }}" placeholder="Digite o número de dias">
+        <!-- Campo oculto para preservar o texto do textarea -->
+        <input type="hidden" name="text-message" id="hiddenTextMessage" value="{{ initial.message|default:'' }}">
         <button class="btn-buscar" type="submit" formmethod="get">Buscar</button>
-        <!-- Botão "Criar" ou "Atualizar", dependendo se estiver editando -->
         <button class="btn-criar" type="submit" form="sendMessageForm">
           {% if initial.id %}Atualizar{% else %}Criar{% endif %}
         </button>
@@ -19,16 +19,12 @@
   </div>
 </div>
 
-<!-- Formulário que contém o textarea (POST) -->
 <form id="sendMessageForm" method="post" action="{% url 'home' %}">
   {% csrf_token %}
-  <input type="hidden" name="dias" value="{{ dias }}">
-  <!-- Campo oculto para receber o nome da campanha, copiado via JS -->
-  <input type="hidden" name="name" id="hiddenCampaignName" value="">
-  <!-- Campo oculto para armazenar o ID da campanha em edição -->
+  <input type="hidden" name="dias" id="hiddenDias" value="{{ dias }}">
+  <input type="hidden" name="name" id="hiddenCampaignName" value="{{ initial.name|default:'' }}">
   <input type="hidden" name="campaign_id" id="hiddenCampaignId" value="{{ initial.id|default:'' }}">
-  <textarea class="text-area" name="text-message" id="text-m" 
-            placeholder="{{ placeholder }}" maxlength="160">{{ initial.message|default:'' }}</textarea>
+  <textarea class="text-area" name="text-message" id="text-m" placeholder="{{ placeholder }}" maxlength="160">{{ initial.message|default:'' }}</textarea>
 </form>
 
 <div class="table-container">
@@ -52,9 +48,15 @@
         <td>{{ c.contrato }}</td>
         <td>{{ c.vencimento }}</td>
         <td class="del-content">
-          <a href="{% url 'remove_cliente' c.codigo_cliente %}" class="btn-del">
-            Excluir <i class="bi bi-trash"></i>
-          </a>
+          {% if initial.id %}
+            <a href="{% url 'remove_cliente' c.codigo_cliente %}?edit_campaign_id={{ initial.id }}" class="btn-del">
+              Excluir <i class="bi bi-trash"></i>
+            </a>
+          {% else %}
+            <a href="{% url 'remove_cliente' c.codigo_cliente %}" class="btn-del">
+              Excluir <i class="bi bi-trash"></i>
+            </a>
+          {% endif %}
         </td>
       </tr>
       {% endfor %}
@@ -63,11 +65,16 @@
 </div>
 
 <script>
-  // Quando o botão "Criar/Atualizar" for clicado, copia o valor do input "name" (do form GET)
-  // para o campo oculto no formulário POST.
+  // Ao clicar no botão "Criar/Atualizar", copia o valor do input "campaignName" para o campo oculto
   document.querySelector('.btn-criar').addEventListener('click', function() {
-    var campaignName = document.querySelector('input[name="name"]').value;
+    var campaignName = document.getElementById('campaignName').value;
     document.getElementById('hiddenCampaignName').value = campaignName;
+  });
+
+  // Antes de submeter o formulário GET, copia o valor atual do textarea para o campo oculto "hiddenTextMessage"
+  document.getElementById('getForm').addEventListener('submit', function() {
+    var textMessage = document.getElementById('text-m').value;
+    document.getElementById('hiddenTextMessage').value = textMessage;
   });
 </script>
 {% endblock content %}

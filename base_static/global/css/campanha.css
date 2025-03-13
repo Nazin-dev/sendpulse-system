@@ -69,6 +69,7 @@
     padding-left: 24px;
     padding-right: 24px;
     background-color: var(--background-color-lite);
+    box-shadow: 2px 2px 4px #b6b6b6;
 }
 
 .campaign-actions {

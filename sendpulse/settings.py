@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'send',
     'django_browser_reload',
+    'django_crontab',
+]
+
+CRONJOBS = [
+    ('0 8 * * *', 'send.scripts.cron.run_campaigns'),
 ]
 
 MIDDLEWARE = [
