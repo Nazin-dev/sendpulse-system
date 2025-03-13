@@ -71,19 +71,19 @@ def home(request):
                 campaign["id"] = edit_campaign_id
                 initial_data = campaign
         else:
-            # Para nova campanha, pega os valores da query string (se houver)
+            # Para nova campanha, usa os valores da query string (se houver)
             initial_data = {
                 "name": request.GET.get("name", ""),
                 "dias": request.GET.get("dias", ""),
                 "message": request.GET.get("text-message", "")
             }
         
-        # Aqui, verificamos se há valor para dias na initial_data; se não, usamos request.GET
+        # Usa o valor de "dias" salvo ou da query string; se não houver, default para 2
         dias_str = initial_data.get("dias")
         if not dias_str:
             dias_str = request.GET.get('dias')
         if not dias_str:
-            dias_str = "2"  # Valor padrão caso não seja informado
+            dias_str = "2"
         try:
             dias = int(dias_str)
         except ValueError:
@@ -104,14 +104,20 @@ def home(request):
         return render(request, 'pages/index.html', context)
 
 def remove_cliente(request, codigo_cliente):
+    # Se estivermos em modo de edição, usamos o parâmetro "edit_campaign_id"
     campaign_id = request.GET.get("edit_campaign_id")
     if campaign_id:
         clients.remove_from_clientes(codigo_cliente, campaign_id)
         return redirect(f"{reverse('home')}?edit_campaign_id={campaign_id}")
     else:
+        # Modo nova campanha: armazena a exclusão na sessão
         exclusions = request.session.get("new_campaign_exclusions", [])
         code = str(codigo_cliente).strip()
         if code not in exclusions:
             exclusions.append(code)
         request.session["new_campaign_exclusions"] = exclusions
+        # Preserve os parâmetros da query string para que os campos não sumam
+        query = request.GET.urlencode()
+        if query:
+            return redirect(f"{reverse('home')}?{query}")
         return redirect('home')

@@ -53,7 +53,7 @@
               Excluir <i class="bi bi-trash"></i>
             </a>
           {% else %}
-            <a href="{% url 'remove_cliente' c.codigo_cliente %}" class="btn-del">
+            <a href="{% url 'remove_cliente' c.codigo_cliente %}" class="btn-del btn-del-new">
               Excluir <i class="bi bi-trash"></i>
             </a>
           {% endif %}
@@ -71,10 +71,23 @@
     document.getElementById('hiddenCampaignName').value = campaignName;
   });
 
-  // Antes de submeter o formulário GET, copia o valor atual do textarea para o campo oculto "hiddenTextMessage"
+  // Antes de submeter o formulário GET ("Buscar"), copia o valor atual do textarea para o campo oculto "hiddenTextMessage"
   document.getElementById('getForm').addEventListener('submit', function() {
     var textMessage = document.getElementById('text-m').value;
     document.getElementById('hiddenTextMessage').value = textMessage;
+  });
+
+  // Para os links de exclusão em nova campanha, intercepta o clique para anexar os valores atuais à URL.
+  document.querySelectorAll('.btn-del-new').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var campaignName = encodeURIComponent(document.getElementById('campaignName').value);
+      var dias = encodeURIComponent(document.getElementById('campaignDias').value);
+      var textMessage = encodeURIComponent(document.getElementById('text-m').value);
+      var baseUrl = link.getAttribute('href');
+      var newUrl = baseUrl + "?name=" + campaignName + "&dias=" + dias + "&text-message=" + textMessage;
+      window.location.href = newUrl;
+    });
   });
 </script>
 {% endblock content %}
