@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --color-max: #0A546F;
+  --backgroun-color-primary: #3292B5;
+  --color-primary: #136d91;
+  --backgroun-color-btn:  #00BBFF;
+  --btn-criar-color: #3BDE32;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+.main-content {
+ padding: 28px;
+}
+
+/* Header e navegação */
+.header-content {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--color-max);
+  height: 8vh;
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distribui o logo, links e o ícone */
+  align-items: center;
+  color: white;
+  font-weight: 600;
+  margin-left: 2vh;
+  position: relative;
+}
+
+/* Container para os links de navegação */
+.nav-links-container {
+  display: flex;
+  gap: 20vh;
+}
+
+/* Estilização dos links (conforme necessário) */
+.nav-links {
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+/* Ícone do menu hambúrguer: oculto em telas grandes */
+.hamburger-icon {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Conteúdo da página */
+.content-submit {
+  display: flex;
+  margin-right: 40px;
+  flex-direction: column;
+  margin-bottom: 28px;
+}
+
+/* Escrol dentro da table */
+.table-container {
+  height: 350px; 
+  overflow-y: auto; 
+  margin: 20px 0;
+  border: 1px solid var(--color-primary); 
+}
+
+.table-client {
+  width: 100%;
+  border: 2px solid var(--backgroun-color-primary);
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.table-client th,
+.table-client td {
+  /* Borda das células */
+  border: 1px solid #ccc;
+  padding: 16px; /* Espaçamento interno, opcional */
+}
+
+/* Estilização dos cabeçalhos */
+th, td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--backgroun-color-primary);
+  color: white;
+}
+
+/* Estilização das linhas alternadas */
+tbody tr:nth-child(even) {
+  background-color: #e7e7e7;
+}
+
+/* Efeito de hover nas linhas */
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+.text-content {
+  margin-top: 2vh;
+  width: 50vh;
+}
+
+.text-area {
+  padding: 1dvh;
+  width: 53vh;
+  height: 16vh;
+  max-height: 30vh;
+  border-radius: 4px;
+  box-sizing: border-box; 
+  resize: none;  
+  outline: none;
+  border: 2px solid var(--backgroun-color-primary);
+}
+
+.btn-selection {
+  display: flex;
+  background-color: var(--backgroun-color-primary);
+  width: 100%;
+  padding: 20px;
+  border-radius: 4px;
+  gap: 50px;
+}
+
+.submit-content {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-selection .btn-buscar {
+  display: flex;
+  padding: 6px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--backgroun-color-btn);
+  background-color: var(--backgroun-color-btn);
+  color: white;
+  font-weight: 700;
+}
+
+.btn-criar {
+  display: flex;
+  padding: 6px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--btn-criar-color);
+  background-color: var(--btn-criar-color);
+  color: white;
+  font-weight: 700;
+}
+
+.btn-selection .btn-buscar:hover {
+  transition: 0.5s;
+  background-color: white;
+  color: var(--backgroun-color-btn);
+  border: 1px solid var(--backgroun-color-btn);
+}
+
+.btn-selection .btn-criar:hover {
+  transition: 0.5s;
+  background-color: white;
+  color: var(--btn-criar-color);
+  border: 1px solid var(--btn-criar-color);
+}
+
+.btn-enviar:hover {
+  transition: 0.5s;
+  background-color: white;
+  border: 1px solid red;
+  color: red;
+}
+
+/* estilização do input */
+.input-filter {
+  width: 39vh;
+  padding: 6px 20px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+}
+
+.input-name {
+  width: 39vh;
+  padding: 6px 20px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+}
+
+.del-content {
+  display: flex;
+  align-items: c;
+}
+
+.btn-del {
+  background-color: red;
+  padding: 8px;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+}
+
+.bi-trash {
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+.btn-del {
+  text-decoration: none;
+  border: 1px solid red;
+}
+
+.btn-del:hover {
+  transition: 0.5s;
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  /* Exibe o ícone de hambúrguer */
+  .hamburger-icon {
+    display: block;
+  }
+  /* Oculta os links de navegação por padrão */
+  .nav-links-container {
+    display: none;
+    flex-direction: column;
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 8vh;
+    left: 0;
+    width: 50vh;
+    text-align: center;
+    gap: 0;
+  }
+  /* Ao ativar, exibe o menu */
+  .nav-links-container.active {
+    display: flex;
+  }
+  /* Ajusta os links do menu */
+  .nav-links {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+  }
+}
+
+/* Media query para telas muito pequenas */
+@media (max-width: 400px) {
+  .text-area {
+    padding: 1dvh;
+    width: 80vh;
+    max-width: 80vh;
+    height: 12vh;
+    max-height: 30vh;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    resize: none;  
+  }
+
+  .text-content {
+    margin-top: 2vh;
+    width: 80vh;
+  }
+}

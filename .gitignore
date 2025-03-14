@@ -1,3 +1,5 @@
 /venv
 
 .vscode
+
+sendpulse/local_settings.py

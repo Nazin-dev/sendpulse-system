@@ -1,0 +1,111 @@
+:root {
+    --backgroun-color-primary: #3292B5;
+    --color-primary: #136d91;
+    --backgroun-color-btn:  #00BBFF;
+    --btn-criar-color: #3BDE32;
+    --color-max: #0A546F;
+    --primary-color-title: #FFFF;
+    --background-color-lite: #CAE8F3;
+    --color-status: #0374FF;
+    --coloor-delete: #FF0303;
+    --color-date: #494949;
+  }
+  
+
+.content-max {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+
+.create-campaign {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    background-color: var(--backgroun-color-primary);
+    border-radius: 4px;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.last-date {
+    color: var(--color-date);
+    font-size: 12px;
+}
+
+.create-campaign .campaing-title {
+    color: var(--primary-color-title);
+}
+
+.create-campaign .create-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color-title);
+    background-color: var(--color-max);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 2px solid var(--color-max);
+}
+.create-campaign .create-icon:hover {
+   transition: 0.5s;
+   background-color: var(--primary-color-title);
+   color: var(--color-max);
+   border: 2px solid var(--color-max);
+}
+
+.list-campaign {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.create-icon .bi-plus-lg {
+  font-size: 20px;
+}
+
+.campaign {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: var(--background-color-lite);
+    box-shadow: 2px 2px 4px #b6b6b6;
+}
+
+.campaign-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-max);
+    color: var(--primary-color-title);
+}
+
+.campaign-delete {
+    background-color: var(--coloor-delete);
+}
+
+.campaign-status {
+    background-color: var(--color-status);
+}
