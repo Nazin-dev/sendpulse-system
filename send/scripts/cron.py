@@ -1,10 +1,11 @@
+from datetime import datetime
 from send.scripts.redis_client import redis_client
 from send.scripts import clients, api
 
 def run_campaigns():
     """
     Busca todas as campanhas ativas e, para cada uma, envia a mensagem da campanha para os clientes
-    que ainda não foram removidos (filtrados pelo ID da campanha).
+    que ainda não foram removidos (filtrados pelo ID da campanha) e atualiza a data do último envio.
     """
     campaign_keys = redis_client.keys("campaign:*")
     
@@ -12,7 +13,7 @@ def run_campaigns():
         data = redis_client.hgetall(key)
         campaign = {k.decode(): v.decode() for k, v in data.items()}
         
-        # Extrai o campaign_id a partir da chave (que tem o formato "campaign:<id>")
+        # Extrai o campaign_id a partir da chave (formato "campaign:<id>")
         campaign_id = key.decode().split(":")[1]
         
         if campaign.get("status") != "active":
@@ -25,7 +26,7 @@ def run_campaigns():
         
         message = campaign.get("message", "")
         
-        # Passa o campaign_id para filtrar os clientes excluídos para essa campanha
+        # Passa o campaign_id para filtrar os clientes removidos
         clientes_list = clients.get_clientes(dias, campaign_id)
         
         phone_numbers = []
@@ -37,3 +38,6 @@ def run_campaigns():
         
         if phone_numbers:
             api.send_sms(phone_numbers, message)
+            # Atualiza a data do último envio com a data atual (formato DD/MM/YYYY)
+            current_date = datetime.now().strftime("%d/%m/%Y")
+            redis_client.hset(key, "last_date", current_date)
