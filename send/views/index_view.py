@@ -41,7 +41,7 @@ def home(request):
             print(f"Campanha {campaign_id} atualizada.")
         else:
             # Cria nova campanha
-            api.send_sms(phone_numbers, text_message)
+            # api.send_sms(phone_numbers, text_message)
             new_campaign_id = redis_client.incr("campaign_id_counter")
             redis_client.hset(f"campaign:{new_campaign_id}", mapping={
                 "name": campaign_name,

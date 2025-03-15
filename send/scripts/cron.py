@@ -36,8 +36,10 @@ def run_campaigns():
                 telefone = '+55' + telefone
             phone_numbers.append(telefone)
         
+        print(f"Campanha {campaign_id} com {len(clientes_list)} clientes; phones={phone_numbers}")
+        
         if phone_numbers:
             api.send_sms(phone_numbers, message)
-            # Atualiza a data do último envio com a data atual (formato DD/MM/YYYY)
-            current_date = datetime.now().strftime("%d/%m/%Y")
+            # Atualiza a data do último envio com a data atual (formato DD/MM/YYYY HH:MM)
+            current_date = datetime.now().strftime("%d/%m/%Y %H:%M")
             redis_client.hset(key, "last_date", current_date)
