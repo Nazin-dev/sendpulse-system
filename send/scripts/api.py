@@ -7,7 +7,7 @@ CLIENT_SECRET = "18b992701549c2831717e07ea387efcc"
 API_URL = "https://api.sendpulse.com"
 
 # Altere para True em ambiente de produção para enviar SMS de verdade.
-SEND_SMS_ENABLED = False
+SEND_SMS_ENABLED = True
 
 def get_access_token():
     url = f"{API_URL}/oauth/access_token"

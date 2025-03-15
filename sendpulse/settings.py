@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 ]
 
 CRONJOBS = [
-    ('0 10 * * 1-6', 'send.scripts.cron.run_campaigns'),
+    ('52 14 * * 1-6', 'send.scripts.cron.run_campaigns'),
 ]
 
 MIDDLEWARE = [
